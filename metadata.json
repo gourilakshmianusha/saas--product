@@ -1,0 +1,6 @@
+{
+  "name": "Sastik - AI Automation & SaaS Platform",
+  "description": "AI Automation for Faster Business Operations. Connect your tools, automate workflows, and help your team get more done with intelligent automation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
