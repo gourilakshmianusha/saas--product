@@ -4,78 +4,70 @@
  */
 
 import React from 'react';
-import { RefreshCw, Unplug, AlertTriangle } from 'lucide-react';
 
 export const ProblemsSection: React.FC = () => {
-  const problems = [
-    {
-      number: '01',
-      title: 'Manual Work Everywhere',
-      icon: <RefreshCw size={26} />,
-      bullets: [
-        'Teams repeat the same tasks manually.',
-        'Unnecessary operational effort increases.',
-        'Automation opportunities remain unused.',
-      ],
-    },
-    {
-      number: '02',
-      title: 'Disconnected Tools',
-      icon: <Unplug size={26} />,
-      bullets: [
-        "Tools don't integrate properly.",
-        'Data lives in separate silos.',
-        'Constant context switching reduces focus.',
-      ],
-    },
-    {
-      number: '03',
-      title: 'Inefficient Processes',
-      icon: <AlertTriangle size={26} />,
-      bullets: [
-        'Information scattered across platforms.',
-        'Manual reporting slows leadership.',
-        'No real-time performance visibility.',
-      ],
-    },
-  ];
-
   return (
-    <section id="problems" className="problem-section section-padding">
-      <div className="sastik-container">
-        {/* Section Header */}
-        <div className="section-header-center">
-          <div className="section-badge">
-            <span className="section-badge-dot" />
-            <span>Operational Bottlenecks</span>
+    <section id="problems" className="problem pt-120 pb-120">
+      <div className="container">
+        <div className="as-problem-wrapper">
+          <div className="sec-title sec-title--three mb-60 text-center">
+            <p className="sub-title">
+              <img src="/assets/img/shape/sub-vactor.png" alt="" />
+              <span>Problems</span>
+              <img src="/assets/img/shape/sub-vactor02.png" alt="" />
+            </p>
+            <div className="clearfix" />
+            <h2 className="title d-inline-block" style={{ fontSize: 'clamp(2rem, 3.8vw, 3.2rem)' }}>
+              What’s Slowing Your Team Down?
+            </h2>
           </div>
-          <h2>What's Slowing Your Team Down?</h2>
-          <p>
-            Traditional workflows are fragmented and manual. Here is what drains productivity and inflates operational drag across modern companies.
-          </p>
-        </div>
 
-        {/* 3 Problem Cards */}
-        <div className="problem-cards-grid">
-          {problems.map((problem) => (
-            <div key={problem.number} className="problem-card">
-              <div className="problem-card-top">
-                <span className="problem-number tabular-nums">{problem.number}</span>
-                <div className="problem-icon-wrap">{problem.icon}</div>
-              </div>
-
-              <h3>{problem.title}</h3>
-
-              <ul className="problem-bullet-list">
-                {problem.bullets.map((bullet, idx) => (
-                  <li key={idx} className="problem-bullet-item">
-                    <span className="bullet-dot" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
+          <div className="as-problem-inner">
+            <div className="as-problem-item">
+              <h2 className="xb-item--title">Manual Work Everywhere</h2>
+              <ul className="xb-item--list list-unstyled">
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Teams repeat the same tasks manually
+                </li>
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Unnecessary operational effort increases
+                </li>
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Automation opportunities remain unused
+                </li>
               </ul>
             </div>
-          ))}
+
+            <div className="as-problem-item">
+              <h2 className="xb-item--title">Disconnected Tools</h2>
+              <ul className="xb-item--list list-unstyled">
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Tools don’t integrate properly
+                </li>
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Data lives in separate silos
+                </li>
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Constant context switching reduces focus
+                </li>
+              </ul>
+            </div>
+
+            <div className="as-problem-item">
+              <h2 className="xb-item--title">Inefficient Processes</h2>
+              <ul className="xb-item--list list-unstyled">
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Information scattered across platforms
+                </li>
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> Manual reporting slows leadership
+                </li>
+                <li>
+                  <img src="/assets/img/icon/warning-icon.svg" alt="icon" /> No real-time performance visibility
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

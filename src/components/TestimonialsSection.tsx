@@ -3,182 +3,195 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import React from 'react';
 
 export const TestimonialsSection: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
-
-  const testimonials = [
+  const row1 = [
     {
-      name: 'David Reynolds',
-      role: 'Operations Manager',
-      company: 'CloudScale Global',
-      initials: 'DR',
-      quote:
-        'Sastik unified our disparate ticketing and CRM pipelines in 48 hours. Our operational cycle times dropped by 64%, and we eliminated over 14 hours of manual copy-paste overhead every single week.',
-      rating: 5,
-    },
-    {
+      logo: '/assets/img/testimonial/logo01.png',
+      quote: (
+        <>
+          Before switching to this platform, our workflows were scattered across multiple tools.{' '}
+          <span>Now everything runs smoothly in one place,</span> saving us hours every week.
+        </>
+      ),
+      avatar: '/assets/img/avatar/tes-avatar01.png',
       name: 'Daniel Thompson',
-      role: 'VP of Operations',
-      company: 'Synthetix Dynamics',
-      initials: 'DT',
-      quote:
-        'The autonomous self-healing execution is pure magic. When third-party webhook endpoints time out, Sastik handles retries and backoff seamlessly without our engineers ever getting paged.',
-      rating: 5,
+      desig: 'VP of Operations',
     },
     {
+      logo: '/assets/img/testimonial/logo02.png',
+      quote: (
+        <>
+          Before switching to this platform, our workflows were scattered across multiple tools.{' '}
+          <span>Now everything runs smoothly in one place,</span> saving us hours every week.
+        </>
+      ),
+      avatar: '/assets/img/avatar/tes-avatar02.png',
+      name: 'David Reynolds',
+      desig: 'Operations Manager',
+    },
+    {
+      logo: '/assets/img/testimonial/logo03.png',
+      quote: (
+        <>
+          <span>The efficiency boost was immediate.</span> Processes that previously took hours are now completed without any manual involvement.
+        </>
+      ),
+      avatar: '/assets/img/avatar/tes-avatar02.png',
       name: 'Matthew Collins',
-      role: 'Marketing Manager',
-      company: 'PulseFlow Media',
-      initials: 'MC',
-      quote:
-        'Our lead enrichment pipeline now triggers instantaneously. Qualified prospect response time shifted from 4 hours to 45 seconds, which directly increased our demo conversion rate by 38%.',
-      rating: 5,
-    },
-    {
-      name: 'Ethan Brooks',
-      role: 'Automation Specialist',
-      company: 'NexusHQ Technologies',
-      initials: 'EB',
-      quote:
-        'Having DeepSeek and OpenAI reasoning agents embedded natively in our workflow graphs completely transformed how we process unstructured invoices and customer requirements.',
-      rating: 5,
-    },
-    {
-      name: 'Noah Richardson',
-      role: 'Technical Project Manager',
-      company: 'OrbitWorks Software',
-      initials: 'NR',
-      quote:
-        'Security was our top hurdle with SaaS tools. Sastik passed our SOC2 Type II and internal zero-trust architecture audit with zero exceptions. It is the gold standard for enterprise automation.',
-      rating: 5,
+      desig: 'Marketing Manager',
     },
   ];
 
-  // Autoplay
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % (testimonials.length - 2));
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isPaused, testimonials.length]);
+  const row2 = [
+    {
+      logo: '/assets/img/testimonial/logo04.png',
+      quote: (
+        <>
+          Our operations <span>became far more organized and transparent.</span> Everyone knows what’s happening without constant check-ins.
+        </>
+      ),
+      avatar: '/assets/img/avatar/tes-avatar04.png',
+      name: 'Ethan Brooks',
+      desig: 'Automation Specialist',
+    },
+    {
+      logo: '/assets/img/testimonial/logo05.png',
+      quote: (
+        <>
+          What impressed me most is <span>how seamlessly it integrates into our existing process</span> without disrupting our workflow.
+        </>
+      ),
+      avatar: '/assets/img/avatar/tes-avatar05.png',
+      name: 'Daniel Thompson',
+      desig: 'VP of Operations',
+    },
+    {
+      logo: '/assets/img/testimonial/logo03.png',
+      quote: (
+        <>
+          The <span>automation features genuinely changed</span> how our team operates. Tasks that used to take days now happen automatically in the background.
+        </>
+      ),
+      avatar: '/assets/img/avatar/tes-avatar01.png',
+      name: 'Noah Richardson',
+      desig: 'Technical Project Manager',
+    },
+  ];
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 3 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % (testimonials.length - 2));
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    if (deltaX > 50) handlePrev();
-    if (deltaX < -50) handleNext();
-    touchStartX.current = null;
-  };
+  // Repeat items for seamless vertical scroll marquee loop
+  const repeatedRow1 = [...row1, ...row1, ...row1];
+  const repeatedRow2 = [...row2, ...row2, ...row2];
 
   return (
-    <section id="testimonials" className="testimonials-section section-padding">
-      <div className="sastik-container">
-        {/* Header */}
-        <div className="section-header-center">
-          <div className="section-badge">
-            <span className="section-badge-dot" />
-            <span>Customer Stories</span>
+    <section id="testimonials" className="testimonial pos-rel pt-135 pb-120">
+      <div className="container">
+        <div className="as-testimonials-wrapper">
+          {/* Section Title Header */}
+          <div className="row justify-content-center">
+            <div className="col-xl-6 col-lg-10">
+              <div className="sec-title sec-title--three mb-60 text-center">
+                <p className="sub-title">
+                  <img src="/assets/img/shape/sub-vactor.png" alt="" />
+                  <span>Testimonials</span>
+                  <img src="/assets/img/shape/sub-vactor02.png" alt="" />
+                </p>
+                <h2 className="title" style={{ fontSize: 'clamp(2rem, 3.6vw, 3rem)' }}>
+                  How Teams Use Sastik to Work Faster
+                </h2>
+              </div>
+            </div>
           </div>
-          <h2>How Teams Use Sastik to Work Faster</h2>
-          <p>
-            Real results from engineering, product, and operations leaders who eliminated repetitive tasks and unlocked 10x throughput.
-          </p>
-        </div>
 
-        {/* Carousel Container */}
-        <div
-          className="testimonial-carousel-container"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div
-            className="testimonial-slider"
-            style={{
-              transform: `translateX(-${currentIndex * 404}px)`,
-            }}
-          >
-            {testimonials.map((t) => (
-              <div key={t.name} className="testimonial-card">
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
-                    <div className="rating-stars">
-                      {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} size={15} fill="#f59e0b" color="#f59e0b" />
-                      ))}
-                    </div>
-                    <Quote size={24} color="rgba(104, 64, 255, 0.25)" />
-                  </div>
-                  <p className="testimonial-quote">"{t.quote}"</p>
-                </div>
-
-                <div className="testimonial-author-block">
-                  <div className="author-avatar">{t.initials}</div>
-                  <div className="author-info">
-                    <h4>{t.name}</h4>
-                    <p>{t.role} · {t.company}</p>
+          {/* Testimonial Inner Layout matching reference */}
+          <div className="as-testimonials-inner o-hidden">
+            <div className="row g-0 mt-none-30 align-items-center justify-content-center">
+              {/* Left Column: David Reynolds Video Card */}
+              <div className="col-lg-4 col-md-12 mt-30 d-flex justify-content-center">
+                <div className="as-testimonail-video">
+                  <video
+                    loop
+                    muted
+                    playsInline
+                    autoPlay
+                    poster="/assets/img/testimonial/video-img.png"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  >
+                    <source src="https://www.pexels.com/download/video/7262257/" type="video/mp4" />
+                  </video>
+                  <div className="xb-holder">
+                    <h2>David Reynolds</h2>
+                    <p>
+                      Operations Manager at <span>Luminus.co</span>
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Controls */}
-          <div className="carousel-controls">
-            <button
-              onClick={handlePrev}
-              className="carousel-btn"
-              aria-label="Previous testimonials"
-            >
-              <ChevronLeft size={20} />
-            </button>
+              {/* Right Column: Sliding Vertical Marquee Columns */}
+              <div className="col-lg-8 col-md-12 mt-30">
+                <div className="as-testimonail-wrap">
+                  <div className="as-testimonail-content">
+                    {/* Marquee Column 1 */}
+                    <div className="as-testimonail-inner marquee-2">
+                      {repeatedRow1.map((item, idx) => (
+                        <div key={`col1-${idx}`} className="as-testimonail-item">
+                          <div className="xb-item--logo">
+                            <img src={item.logo} alt="client company logo" />
+                          </div>
+                          <p className="xb-item--content">{item.quote}</p>
+                          <div className="xb-item--avatar ul_li" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <div className="xb-item--author" style={{ width: 44, height: 44, borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
+                              <img src={item.avatar} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                            <div className="xb-item--holder">
+                              <h3 className="xb-item--name" style={{ fontSize: '1.05rem', margin: '0 0 2px 0', fontWeight: 700 }}>
+                                {item.name}
+                              </h3>
+                              <p className="xb-item--desig" style={{ margin: 0, fontSize: '0.85rem', color: '#777676' }}>
+                                {item.desig}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
 
-            {/* Pagination Indicators */}
-            <div style={{ display: 'flex', gap: 6 }}>
-              {[0, 1, 2].map((idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  style={{
-                    width: idx === currentIndex ? 24 : 8,
-                    height: 8,
-                    borderRadius: 4,
-                    background: idx === currentIndex ? 'var(--color-primary)' : 'rgba(20, 15, 38, 0.15)',
-                    transition: 'all 240ms ease',
-                  }}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
+                    {/* Marquee Column 2 (hidden on mobile, visible on desktop) */}
+                    <div className="as-testimonail-inner marquee-first d-none d-md-flex" style={{ flexDirection: 'column' }}>
+                      {repeatedRow2.map((item, idx) => (
+                        <div key={`col2-${idx}`} className="as-testimonail-item">
+                          <div className="xb-item--logo">
+                            <img src={item.logo} alt="client company logo" />
+                          </div>
+                          <p className="xb-item--content">{item.quote}</p>
+                          <div className="xb-item--avatar ul_li" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <div className="xb-item--author" style={{ width: 44, height: 44, borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
+                              <img src={item.avatar} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                            <div className="xb-item--holder">
+                              <h3 className="xb-item--name" style={{ fontSize: '1.05rem', margin: '0 0 2px 0', fontWeight: 700 }}>
+                                {item.name}
+                              </h3>
+                              <p className="xb-item--desig" style={{ margin: 0, fontSize: '0.85rem', color: '#777676' }}>
+                                {item.desig}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <button
-              onClick={handleNext}
-              className="carousel-btn"
-              aria-label="Next testimonials"
-            >
-              <ChevronRight size={20} />
-            </button>
           </div>
         </div>
+      </div>
+
+      <div className="sec-line-shape top-line" style={{ position: 'absolute', top: 0, left: 0, right: 0, textAlign: 'center', pointerEvents: 'none' }}>
+        <img src="/assets/img/shape/sec-stroke.png" alt="" style={{ maxWidth: '100%' }} />
       </div>
     </section>
   );

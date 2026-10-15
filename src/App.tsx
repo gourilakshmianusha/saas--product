@@ -6,7 +6,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar.tsx';
 import { HeroSection } from './components/HeroSection.tsx';
-import { TrustStrip } from './components/TrustStrip.tsx';
 import { ProblemsSection } from './components/ProblemsSection.tsx';
 import { SolutionsSection } from './components/SolutionsSection.tsx';
 import { FeaturesSection } from './components/FeaturesSection.tsx';
@@ -48,10 +47,10 @@ export default function App() {
       'hero',
       'problems',
       'solutions',
-      'features',
-      'how-it-works',
+      'feature',
+      'work',
       'integrations',
-      'ai-core',
+      'introduction',
       'pricing',
       'testimonials',
       'security',
@@ -121,61 +120,72 @@ export default function App() {
           onOpenDemo={() => setIsDemoOpen(true)}
         />
 
-        {/* 3. Trust / Rating Strip */}
-        <TrustStrip />
+        {/* First Content Body Container with Authentic Side Stroke Frames */}
+        <div className="as-body-inner mxw-1339 mb-120">
+          <div className="as-site-line">
+            <div className="line line--1">
+              <img src="/assets/img/shape/side-stroke.png" alt="line shape" />
+            </div>
+            <div className="line line--2">
+              <img src="/assets/img/shape/side-stroke.png" alt="line shape" />
+            </div>
+          </div>
 
-        {/* 4. Problems Section */}
-        <ProblemsSection />
+          {/* 3. Problems Section */}
+          <ProblemsSection />
 
-        {/* 5. Solutions Section */}
-        <SolutionsSection
-          onOpenDemo={() => setIsDemoOpen(true)}
-          onOpenTrial={() => {
-            setSelectedPlan('Basic Subscription');
-            setIsTrialOpen(true);
-          }}
-        />
+          {/* 4. Solutions Section */}
+          <SolutionsSection
+            onOpenDemo={() => setIsDemoOpen(true)}
+            onOpenTrial={() => {
+              setSelectedPlan('Basic Subscription');
+              setIsTrialOpen(true);
+            }}
+          />
 
-        {/* 6. Features Section */}
-        <FeaturesSection
-          onOpenTrial={() => {
-            setSelectedPlan('Basic Subscription');
-            setIsTrialOpen(true);
-          }}
-        />
+          {/* 5. Features Section */}
+          <FeaturesSection />
 
-        {/* 7. How It Works Section */}
-        <HowItWorksSection
-          onOpenTrial={() => {
-            setSelectedPlan('SaStik Joyful Start');
-            setIsTrialOpen(true);
-          }}
-        />
+          {/* 6. How It Works Section */}
+          <HowItWorksSection />
 
-        {/* 8. Integrations Section */}
-        <IntegrationsSection />
+          {/* 7. Integrations Section */}
+          <IntegrationsSection />
 
-        {/* 9. AI Introduction Section */}
-        <AiIntroductionSection
-          onOpenTrial={() => {
-            setSelectedPlan('Enterprise Pro');
-            setIsTrialOpen(true);
-          }}
-        />
+          {/* 8. AI Introduction Section */}
+          <AiIntroductionSection />
+        </div>
 
-        {/* 10. Pricing Section */}
+        {/* 9. Pricing Section (Full Width) */}
         <PricingSection onSelectPlan={handleOpenPlanTrial} />
 
-        {/* 11. Testimonials Carousel */}
-        <TestimonialsSection />
+        {/* Second Content Body Container with Authentic Side Stroke Frames */}
+        <div className="as-body-inner mxw-1339 mt-120 mb-120">
+          <div className="as-site-line">
+            <div className="line line--1">
+              <img src="/assets/img/shape/side-stroke.png" alt="line shape" />
+            </div>
+            <div className="line line--2">
+              <img src="/assets/img/shape/side-stroke.png" alt="line shape" />
+            </div>
+          </div>
 
-        {/* 12. Security Section */}
-        <SecuritySection />
+          {/* 10. Testimonials Carousel & Marquee */}
+          <TestimonialsSection />
 
-        {/* 13. FAQ Section */}
-        <FaqSection />
+          {/* 11. Security Section */}
+          <SecuritySection
+            onOpenTrial={() => {
+              setSelectedPlan('SaStik Joyful Start');
+              setIsTrialOpen(true);
+            }}
+          />
 
-        {/* 14. Final CTA & Newsletter Section */}
+          {/* 12. FAQ Section */}
+          <FaqSection />
+        </div>
+
+        {/* 13. Final CTA & Brand Section */}
         <FinalCtaSection
           onOpenTrial={() => {
             setSelectedPlan('SaStik Joyful Start');

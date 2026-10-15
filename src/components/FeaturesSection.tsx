@@ -3,227 +3,126 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import { 
-  ArrowUpDown, 
-  MessageSquareCode, 
-  SlidersHorizontal, 
-  RefreshCw, 
-  Target, 
-  Check, 
-  ArrowRight,
-  Sparkles,
-  Layers,
-  Cpu
-} from 'lucide-react';
+import React from 'react';
 
-interface FeaturesSectionProps {
-  onOpenTrial: () => void;
-}
-
-export const FeaturesSection: React.FC<FeaturesSectionProps> = ({ onOpenTrial }) => {
-  const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
-
-  const features = [
-    {
-      title: 'Smart Priority Sorting',
-      desc: 'Streamline workflow through smart priority ranking with intelligent automation.',
-      icon: <ArrowUpDown size={22} />,
-      tag: 'Rank-Engine v3',
-      visualTitle: 'Autonomous Queue Prioritization',
-      items: [
-        { label: 'Critical: Database Read Replica Failover', score: 'P0 · 99.4%', status: 'Escalated' },
-        { label: 'High: Enterprise License Renewal ($80k ARR)', score: 'P1 · 94.2%', status: 'Routed' },
-        { label: 'Medium: API Rate-Limit Warning Notification', score: 'P2 · 78.1%', status: 'Queued' },
-      ],
-      metric: '4.2x Faster Response Time',
-    },
-    {
-      title: 'Quick Smart Responses',
-      desc: 'Sharp answers to keep conversations flowing smoothly without delays.',
-      icon: <MessageSquareCode size={22} />,
-      tag: 'Neural-Chat Sync',
-      visualTitle: 'Multi-Modal Contextual Auto-Replies',
-      items: [
-        { label: 'Inbound Customer Question: "SSO SAML configuration for Okta"', score: 'Confidence 99.8%', status: 'Answered' },
-        { label: 'Suggested Response: "Sastik supports SAML 2.0 with instant Okta provisioning."', score: 'Reviewed by AI', status: 'Delivered' },
-        { label: 'Outcome: Ticket resolved in 1.2s without human agent wait', score: 'Satisfaction 5/5', status: 'Archived' },
-      ],
-      metric: '92% First-Touch Resolution',
-    },
-    {
-      title: 'Smart AI Control',
-      desc: 'Advanced AI control for seamless workflow automation without complexity.',
-      icon: <SlidersHorizontal size={22} />,
-      tag: 'Policy-Governed AI',
-      visualTitle: 'Granular Guardrails & Autonomous Execution',
-      items: [
-        { label: 'Data Redaction: PII filtered before inference', score: 'Enforced', status: 'Active' },
-        { label: 'Human-in-the-Loop Threshold: Actions > $5,000 need approval', score: 'Rule Active', status: 'Enforced' },
-        { label: 'Execution Audit Trail: Immutable cryptographic logging', score: 'Compliant', status: 'Synced' },
-      ],
-      metric: '100% Policy Verification',
-    },
-    {
-      title: 'Unified Channel Sync',
-      desc: 'Connect every platform together, ensuring consistent messaging, instant updates, and smooth workflow management across teams.',
-      icon: <RefreshCw size={22} />,
-      tag: 'Omni-Channel Stream',
-      visualTitle: 'Universal Webhook & Bi-Directional Event Relay',
-      items: [
-        { label: 'Slack #engineering ↔ Jira Cloud ↔ GitHub PRs', score: 'Bi-directional', status: 'Synchronized' },
-        { label: 'Salesforce CRM ↔ HubSpot ↔ Stripe Billing', score: 'Real-time (12ms)', status: 'Connected' },
-        { label: 'Customer Portal ↔ Zendesk ↔ Datadog APM', score: 'Zero Lag', status: 'Streaming' },
-      ],
-      metric: '0 Lost Context Switches',
-    },
-    {
-      title: 'Intelligent Lead Ranking',
-      desc: 'Automatically score and prioritize leads using smart data insights to help your team focus on high value prospects.',
-      icon: <Target size={22} />,
-      tag: 'Predictive Propensity ML',
-      visualTitle: 'Algorithmic Lead Scoring & Deal Routing',
-      items: [
-        { label: 'Venture Capital Corp · 450 seats · Cloud migration', score: 'Score: 98/100', status: 'Priority A+' },
-        { label: 'Global Retail Holdings · 1,200 seats · ERP Integration', score: 'Score: 96/100', status: 'Priority A+' },
-        { label: 'Regional Agency · 35 seats · Marketing automation', score: 'Score: 84/100', status: 'Priority B' },
-      ],
-      metric: '68% Increase in Win Rates',
-    },
-  ];
-
-  const current = features[activeFeatureIndex];
-
+export const FeaturesSection: React.FC = () => {
   return (
-    <section id="features" className="features-section section-padding">
-      <div className="sastik-container">
-        {/* Section Header */}
-        <div className="section-header-center">
-          <div className="section-badge">
-            <span className="section-badge-dot" />
-            <span>Interactive Feature Engine</span>
-          </div>
-          <h2>Everything You Need for Smarter Workflows</h2>
-          <p>
-            Experience next-generation automation architecture designed to eliminate operational friction and orchestrate mission-critical workflows.
-          </p>
-        </div>
-
-        {/* Interactive Showcase Grid */}
-        <div className="features-interactive-wrapper">
-          {/* Left Column: Feature Tabs */}
-          <div className="features-tab-list">
-            {features.map((feature, idx) => {
-              const isActive = activeFeatureIndex === idx;
-              return (
-                <button
-                  key={feature.title}
-                  type="button"
-                  className={`feature-tab-btn ${isActive ? 'active' : ''}`}
-                  onClick={() => setActiveFeatureIndex(idx)}
-                >
-                  <div className="feature-tab-icon">{feature.icon}</div>
-                  <div className="feature-tab-content">
-                    <h4>{feature.title}</h4>
-                    <p>{feature.desc}</p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right Column: Live Showcase Visual Canvas */}
-          <div className="feature-showcase-canvas">
-            <div>
-              <div className="canvas-header">
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', color: '#ffffff', marginBottom: 4 }}>
-                    {current.visualTitle}
-                  </h3>
-                  <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)' }}>
-                    {current.desc}
-                  </span>
-                </div>
-                <span className="canvas-tag">{current.tag}</span>
+    <section id="feature" className="feature pos-rel pt-135 pb-120">
+      <div className="container">
+        <div className="as-feature-wrapper">
+          <div className="row justify-content-center">
+            <div className="col-xl-6 col-lg-10">
+              <div className="sec-title sec-title--three mb-60 text-center">
+                <p className="sub-title">
+                  <img src="/assets/img/shape/sub-vactor.png" alt="" />
+                  <span>Feature</span>
+                  <img src="/assets/img/shape/sub-vactor02.png" alt="" />
+                </p>
+                <h2 className="title wow xb-animetion-left" style={{ fontSize: 'clamp(2rem, 3.8vw, 3.2rem)' }}>
+                  Everything You Need for Smarter Workflows
+                </h2>
               </div>
+            </div>
+          </div>
 
-              {/* Dynamic Mock Interface */}
-              <div className="canvas-live-demo">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  {current.items.map((row, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '12px 16px',
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.08)',
-                        borderRadius: 10,
-                        gap: 12,
-                        flexWrap: 'wrap',
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#a1ff62' }} />
-                        <span style={{ fontSize: '0.9rem', color: '#ffffff', fontWeight: 500 }}>
-                          {row.label}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                        <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-mono)' }}>
-                          {row.score}
-                        </span>
-                        <span
-                          style={{
-                            fontSize: '0.725rem',
-                            fontWeight: 700,
-                            padding: '3px 8px',
-                            borderRadius: 6,
-                            background: 'rgba(104, 64, 255, 0.25)',
-                            color: '#8e70ff',
-                            border: '1px solid rgba(142, 112, 255, 0.4)',
-                          }}
-                        >
-                          {row.status}
-                        </span>
-                      </div>
+          <div className="as-feature-inner">
+            <div className="row mt-none-30">
+              {/* Card 1: Smart Priority Sorting */}
+              <div className="col-lg-4 col-md-6 mt-30">
+                <div className="as-feature-item">
+                  <div className="xb-item--inner">
+                    <div className="xb-item--bg">
+                      <img src="/assets/img/shape/fea-bg-shape01.png" alt="image" />
                     </div>
-                  ))}
+                    <div className="xb-item--img">
+                      <img src="/assets/img/feature/as-fea-img01.png" alt="image" />
+                    </div>
+                    <div className="xb-item--holder">
+                      <h2 className="xb-item--title">Smart Priority Sorting</h2>
+                      <p className="xb-item--content">Streamline workflow through smart priority ranking with intelligent automation.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Quick Smart Responses */}
+              <div className="col-lg-4 col-md-6 mt-30">
+                <div className="as-feature-item">
+                  <div className="xb-item--inner">
+                    <div className="xb-item--bg">
+                      <img src="/assets/img/shape/fea-bg-shape02.png" alt="image" />
+                    </div>
+                    <div className="xb-item--img">
+                      <img src="/assets/img/feature/as-fea-img02.png" alt="image" />
+                    </div>
+                    <div className="xb-item--holder">
+                      <h2 className="xb-item--title">Quick Smart Responses</h2>
+                      <p className="xb-item--content">Sharp answers to keep conversations flowing smoothly without delays.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Smart AI Control */}
+              <div className="col-lg-4 col-md-6 mt-30">
+                <div className="as-feature-item">
+                  <div className="xb-item--inner">
+                    <div className="xb-item--bg">
+                      <img src="/assets/img/shape/fea-bg-shape03.png" alt="image" />
+                    </div>
+                    <div className="xb-item--img">
+                      <img src="/assets/img/feature/as-fea-img03.png" alt="image" />
+                    </div>
+                    <div className="xb-item--holder">
+                      <h2 className="xb-item--title">Smart AI Control</h2>
+                      <p className="xb-item--content">Advanced AI control for seamless workflow automation without complexity.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4 (large): Unified Channel Sync */}
+              <div className="col-lg-6 mt-30">
+                <div className="as-feature-item large-item">
+                  <div className="xb-item--inner">
+                    <div className="xb-item--bg">
+                      <img src="/assets/img/shape/fea-bg-shape04.png" alt="image" />
+                    </div>
+                    <div className="xb-item--img">
+                      <img src="/assets/img/feature/as-fea-img04.png" alt="image" />
+                    </div>
+                    <div className="xb-item--holder">
+                      <h2 className="xb-item--title">Unified Channel Sync</h2>
+                      <p className="xb-item--content">Connect every platform together, ensuring consistent messaging, instant updates, and smooth workflow management across teams</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 5 (large): Intelligent Lead Ranking */}
+              <div className="col-lg-6 mt-30">
+                <div className="as-feature-item large-item">
+                  <div className="xb-item--inner">
+                    <div className="xb-item--bg">
+                      <img src="/assets/img/shape/fea-bg-shape05.png" alt="image" />
+                    </div>
+                    <div className="xb-item--img">
+                      <img src="/assets/img/feature/as-fea-img05.png" alt="image" />
+                    </div>
+                    <div className="xb-item--holder">
+                      <h2 className="xb-item--title">Intelligent Lead Ranking</h2>
+                      <p className="xb-item--content">Automatically score and prioritize leads using smart data insights to help your team focus on high value prospects</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Bottom canvas strip */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingTop: 24,
-                marginTop: 20,
-                borderTop: '1px solid rgba(255,255,255,0.08)',
-                flexWrap: 'wrap',
-                gap: 14,
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <Sparkles size={16} color="#a1ff62" />
-                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#a1ff62' }}>
-                  {current.metric}
-                </span>
-              </div>
-              <button
-                onClick={onOpenTrial}
-                className="btn-primary"
-                style={{ padding: '10px 20px', fontSize: '0.85rem' }}
-              >
-                Launch with this workflow <ArrowRight size={14} />
-              </button>
-            </div>
           </div>
         </div>
+      </div>
+
+      <div className="sec-line-shape top-line">
+        <img src="/assets/img/shape/sec-stroke.png" alt="" />
       </div>
     </section>
   );
